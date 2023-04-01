@@ -5,11 +5,6 @@ pipeline {
         string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Docker image tag')
     }
 
-    options {
-        // 清除旧代码选项
-        clean(true)
-    }
-
     environment {
         // 从 Docker 仓库中下载已构建的镜像，并将其部署到当前节点
         NODE_IP = "192.168.111.161"
@@ -42,8 +37,8 @@ pipeline {
             steps {
                 script {
                     def remote = [:]
-                    remote.name = "${params.NODE_IP}"
-                    remote.host = "${params.NODE_IP}"
+                    remote.name = "${env.NODE_IP}"
+                    remote.host = "${env.NODE_IP}"
                     remote.user = 'root'
                     remote.password = 'root'
                     remote.allowAnyHosts = true
