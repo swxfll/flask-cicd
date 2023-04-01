@@ -1,6 +1,6 @@
 ## 主题
 
-**测试使用 Jenkins 实现 Flask 项目的自动化部署与持续集成/部署（CI/CD）**
+**基于 Jenkins 和 Docker 的全自动化 Flask 应用 CI/CD 部署流程实践**
 
 ## 此项目的 Flask 实现了哪些功能
 
