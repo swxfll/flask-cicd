@@ -12,3 +12,9 @@
 
 ## 流程图
 ![img.png](img.png)
+
+## 如何部署
+
+请修改 `pipeline` 脚本中的 `environment` 部分, 以及使用有效的 `凭据ID` 替换 `credentialsId`
+
+>[详细教程(待完成)](https://note.youdao.com/s/PKwOejiT)

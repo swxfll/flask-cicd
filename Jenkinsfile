@@ -6,14 +6,22 @@ pipeline {
     }
 
     environment {
-        // 从 Docker 仓库中下载已构建的镜像，并将其部署到当前节点
+        // 从 Docker 仓库中下载已构建的镜像，并将其部署到目标节点
         NODE_IP = "192.168.111.161"
+
+        // 目标节点的用户名和密码, 需要具有ssh远程登录权限和docker操作权限
+        NODE_USER = "root"
+        NODE_PASSWORD = "root"
+
+        // 项目代码地址
+        GIT_URL = "https://github.com/swxfll/flask-cicd.git"
+        //GIT_URL = "https://gitee.com/yun_guo/flask-cicd.git"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/swxfll/flask-cicd.git'
+                git branch: 'main', url: "${env.GIT_URL}"
             }
         }
 
@@ -39,8 +47,8 @@ pipeline {
                     def remote = [:]
                     remote.name = "${env.NODE_IP}"
                     remote.host = "${env.NODE_IP}"
-                    remote.user = 'root'
-                    remote.password = 'root'
+                    remote.user = "${env.NODE_USER}"
+                    remote.password = "${env.NODE_USER}"
                     remote.allowAnyHosts = true
                     sshCommand remote: remote, command: "docker pull ksand/flask-cicd:${params.IMAGE_TAG} && docker run -id -p 5000:5000 ksand/flask-cicd:${params.IMAGE_TAG}"
                 }
