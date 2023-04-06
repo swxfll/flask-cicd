@@ -18,4 +18,5 @@ ENV FLASK_APP app.py
 
 # 启动应用程序
 #CMD ["flask", "run", "--host", "0.0.0.0:5000"]
+# python3 -m flask run --host=0.0.0.0 --port=5000
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=5000"]
